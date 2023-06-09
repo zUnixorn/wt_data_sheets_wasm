@@ -1,0 +1,5 @@
+- [ ] Remove webpack and NPM toolchain
+- [ ] Rewrite CI
+    - [ ] Install trunk
+    - [ ] Remove NPM
+- [ ] Replace all JS glue with Yew functions
