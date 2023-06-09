@@ -44,6 +44,8 @@ rpath = false
 [features]
 
 [dependencies]
+yew = "0.20.0" # The core framework moedeling this page
+
 # The `wasm-bindgen` crate provides the bare minimum functionality needed
 # to interact with JavaScript.
 wasm-bindgen = "0.2.84"
@@ -93,13 +95,6 @@ console_error_panic_hook = "0.1.*"
 [dependencies.web-sys]
 version = "0.3.36"
 features = ["console", "Window", "Document", "Element", "HtmlElement", "Node", "HtmlCollection", "HtmlButtonElement", "HtmlCanvasElement"]
-
-# These crates are used for running unit tests.
-[dev-dependencies]
-wasm-bindgen-test = "0.3.33"
-futures = "0.3.24"
-js-sys = "0.3.*"
-wasm-bindgen-futures = "0.4.33"
 
 [build-dependencies]
 const-gen = "^1.1.0"
