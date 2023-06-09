@@ -27,7 +27,7 @@ jobs:
 
       # Install the needed rust toolchain
       - name: Add toolchain
-        run: rustup toolchain install --profile minimal asm32-unknown-unknown
+        run: rustup toolchain install --profile minimal wasm32-unknown-unknown
 
 #      # Prepares rustup for wasm compiler
 #      - name: Add wasm-target
