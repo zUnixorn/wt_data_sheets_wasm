@@ -53,6 +53,10 @@ jobs:
             target/
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
+
+      - name: Fish???
+        run: ls
+
       # Builds wasm setup
       - name: Build
         run: ./trunk build
