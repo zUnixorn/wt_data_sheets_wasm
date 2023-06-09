@@ -60,10 +60,6 @@ jobs:
       - name: Build
         run: trunk build
 
-#      # Get goatcounter js for self hosting
-#      - name: Download count.js
-#        run: wget "https://gc.zgo.at/count.js" -P dist/
-
 #      # Create dummy file for successful removal of any file
 #      - name: Create dummy file
 #        run: ssh flareflo-github@${{ secrets.CAVE_IP }} 'cd /var/www/nightly_flo_wt_calc; touch placeholder.txt'
