@@ -3,3 +3,5 @@
     - [ ] Install trunk
     - [ ] Remove NPM
 - [ ] Replace all JS glue with Yew functions
+- [ ] Workbox alternative/bindings
+- [ ] Mathjax replacement or integration
