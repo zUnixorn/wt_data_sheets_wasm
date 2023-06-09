@@ -55,7 +55,7 @@ jobs:
 
       # Builds wasm setup
       - name: Build
-        run: trunk build
+        run: ./trunk build
 
 #      # Get goatcounter js for self hosting
 #      - name: Download count.js
