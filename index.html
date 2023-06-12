@@ -3,8 +3,17 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta content="width=device-width, initial-scale=1" name="viewport"/>
-	<link data-trunk href="static/metafiles/favicon.ico" rel="icon">
 
+	<!--	Load rust-->
+	<link data-trunk data-wasm-opt="z" href="Cargo.toml" rel="rust"/>
+
+	<!--	General style-->
+	<link data-trunk href="static/scss/styles.scss" rel="scss">
+	<link data-trunk href="src/pages/footer.scss" rel="scss">
+	<link data-trunk href="static/scss/navbar.scss" rel="scss">
+
+	<!--	Static assets-->
+	<link data-trunk href="static/metafiles/favicon.ico" rel="icon">
 	<link data-trunk href="static/manifest.json" rel="copy-file">
 	<link data-trunk href="static/metafiles" rel="copy-dir">
 	<link data-trunk href="static/font/roboto_mono" rel="copy-dir">
@@ -12,9 +21,6 @@
 	<link data-trunk href="static/img" rel="copy-dir">
 	<!--    TODO: Mathjax-->
 
-	<link data-trunk data-wasm-opt="z" href="Cargo.toml" rel="rust"/>
-	<title>TITLE</title>
+	<title>PAGE</title>
 </head>
-<body>
-</body>
 </html>

@@ -1,18 +1,22 @@
+use std::collections::HashMap;
 use std::panic;
+
+use build_timestamp::build_time;
 use lazy_static::lazy_static;
 use wasm_bindgen::JsValue;
 use wasm_bindgen::prelude::*;
-use std::collections::HashMap;
-use wt_sensor::Radar;
-
-
+use web_sys::Document;
 use wt_datamine_extractor_lib::bombs::bombs::Bomb;
+use wt_datamine_extractor_lib::missile::missile::Missile;
+use wt_datamine_extractor_lib::thermal::thermals::Thermal;
+use wt_sensor::Radar;
+use yew::prelude::*;
+use yew_router::prelude::*;
+
+use crate::pages::privacy_policy::PrivacyPolicy;
 
 use crate::util::{console_log, get_document, make_missile_option_inputs};
-use wt_datamine_extractor_lib::missile::missile::Missile;
-use build_timestamp::build_time;
 
-use wt_datamine_extractor_lib::thermal::thermals::Thermal;
 pub mod table;
 pub mod util;
 pub mod live_calc;
@@ -27,6 +31,7 @@ pub mod utils;
 pub mod localhost;
 pub mod radar;
 pub mod blk_proto;
+mod pages;
 
 pub const GAME_VER: &str = include_str!("../wt_datamine_extractor/meta_index/version.txt");
 pub const BATTLE_RATINGS_RAW: &str = include_str!("../wt_datamine_extractor/battle_rating/all.json");
@@ -69,24 +74,56 @@ lazy_static! {
 	};
 }
 
-#[wasm_bindgen(start)]
-#[allow(clippy::missing_errors_doc)]
-pub fn main_js() -> Result<(), JsValue> {
-	// This provides better error messages in debug mode.
-	// It's disabled in release mode so it doesn't bloat up the file size.
-	// #[cfg(debug_assertions)]
-	panic::set_hook(Box::new(console_error_panic_hook::hook));
-	make_footer_data();
-	Ok(())
+
+#[derive(Clone, Routable, PartialEq)]
+enum Route {
+	#[at("/")]
+	Index,
+	#[at("/privacy_policy")]
+	PrivacyPolicy,
+	#[not_found]
+	#[at("/404")]
+	NotFound,
 }
 
-#[wasm_bindgen]
-pub fn make_footer_data() {
-	let document = get_document();
-	if let Some(ver) = document.get_element_by_id("game_ver") {
-		ver.set_inner_html(&format!("{} last updated on {}", GAME_VER, BUILD_TIME));
-		console_log(&format!("Game version set to {}, with timestamp {}", GAME_VER, BUILD_TIME));
-	} else {
-		console_log(&format!("Cant display game version {}", GAME_VER));
+fn main() {
+	yew::Renderer::<app>::new().render();
+}
+
+#[function_component]
+fn app() -> Html {
+
+	html! {
+		<>
+        <BrowserRouter>
+            <Switch<Route> render={route} />
+        </BrowserRouter>
+			<Footer/>
+		</>
+    }
+}
+
+fn route(routes: Route) -> Html {
+	match routes {
+		Route::Index => html! { {"index"} },
+		Route::PrivacyPolicy => html! {
+            <PrivacyPolicy />
+        },
+		Route::NotFound => html! { <h1>{ "404" }</h1> },
+	}
+}
+
+#[function_component(Footer)]
+fn footer() -> Html {
+	let updated = {format!("{} last updated on {}", GAME_VER, BUILD_TIME)};
+	html! {
+		<>
+			<div id="footer">
+		{updated}<br/>
+			<p>
+				<a href="privacy_policy">{"Privacy Policy"}</a>
+			</p>
+		</div>
+		</>
 	}
 }

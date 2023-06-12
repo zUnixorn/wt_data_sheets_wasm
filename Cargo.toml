@@ -13,9 +13,6 @@ homepage = "wt.flareflo.dev"
 build = "build.rs"
 rust-version = "1.69"
 
-[lib]
-crate-type = ["cdylib"]
-
 [profile.dev]
 opt-level = 0
 debug = true
@@ -44,7 +41,7 @@ rpath = false
 [features]
 
 [dependencies]
-yew = "0.20.0" # The core framework moedeling this page
+yew = { version = "0.20.0", features = ["csr"]} # The core framework moedeling this page
 
 # The `wasm-bindgen` crate provides the bare minimum functionality needed
 # to interact with JavaScript.
@@ -89,6 +86,7 @@ lazy_static = "^1.4.0"
 # in debug mode.
 #[target."cfg(debug)".dependencies]
 console_error_panic_hook = "0.1.*"
+yew-router = "0.17.0"
 
 # The `web-sys` crate allows you to interact with the various browser APIs,
 # like the DOM.
