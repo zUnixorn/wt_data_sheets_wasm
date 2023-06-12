@@ -120,15 +120,15 @@ fn route(routes: Route) -> Html {
 
 #[function_component(Footer)]
 fn footer() -> Html {
-	let updated = {format!("{} last updated on {}", GAME_VER, BUILD_TIME)};
+	let updated = {format!("Game version: {}. Updated on: {}", GAME_VER, BUILD_TIME)};
 	html! {
 		<>
 			<div id="footer">
-		{updated}<br/>
-			<p>
-				<a href="privacy_policy">{"Privacy Policy"}</a>
-			</p>
-		</div>
+				{updated}<br/>
+				<p>
+					<a href="privacy_policy">{"Privacy Policy"}</a>
+				</p>
+			</div>
 		</>
 	}
 }
