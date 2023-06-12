@@ -5,7 +5,6 @@ use build_timestamp::build_time;
 use lazy_static::lazy_static;
 use wasm_bindgen::JsValue;
 use wasm_bindgen::prelude::*;
-use web_sys::Document;
 use wt_datamine_extractor_lib::bombs::bombs::Bomb;
 use wt_datamine_extractor_lib::missile::missile::Missile;
 use wt_datamine_extractor_lib::thermal::thermals::Thermal;
@@ -14,6 +13,7 @@ use yew::prelude::*;
 use yew_router::prelude::*;
 
 use crate::pages::privacy_policy::PrivacyPolicy;
+use crate::pages::navbar::Header;
 
 use crate::util::{console_log, get_document, make_missile_option_inputs};
 
@@ -95,10 +95,11 @@ fn app() -> Html {
 
 	html! {
 		<>
+		<Header/>
         <BrowserRouter>
             <Switch<Route> render={route} />
         </BrowserRouter>
-			<Footer/>
+		<Footer/>
 		</>
     }
 }
