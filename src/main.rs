@@ -109,7 +109,12 @@ fn route(routes: Route) -> Html {
 		Route::PrivacyPolicy => html! {
             <PrivacyPolicy />
         },
-		Route::NotFound => html! { <h1>{ "404" }</h1> },
+		Route::NotFound => html! {
+			<div style="width: fit-content; margin: 0 auto">
+				<h1 style="width: fit-content; margin: 0 auto">{ "404 \n" }</h1>
+				<h2>{"The requested page does not exist"}</h2>
+			</div>
+		},
 	}
 }
 
