@@ -1,6 +1,5 @@
 use wasm_bindgen::prelude::*;
 use web_sys::Element;
-use wt_datamine_extractor_lib::thermal::thermals::Thermal;
 
 
 use crate::util::get_document;

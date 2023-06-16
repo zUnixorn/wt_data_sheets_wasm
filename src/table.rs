@@ -1,4 +1,3 @@
-use std::cmp::Ordering;
 use std::str::FromStr;
 use bevy_reflect::{GetField, Reflect};
 
@@ -8,10 +7,10 @@ use web_sys::Element;
 use wt_ballistics_calc_lib;
 use wt_ballistics_calc_lib::launch_parameters::LaunchParameter;
 use wt_ballistics_calc_lib::runner::generate;
-use wt_datamine_extractor_lib::missile::missile::{Missile, SeekerType};
+use wt_datamine_extractor_lib::missile::missile::{ SeekerType};
 use crate::{MISSILES};
 
-use crate::util::{console_log, get_document};
+use crate::util::{get_document};
 
 #[wasm_bindgen]
 #[allow(clippy::missing_panics_doc)]

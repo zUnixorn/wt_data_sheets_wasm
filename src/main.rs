@@ -1,10 +1,7 @@
 use std::collections::HashMap;
-use std::panic;
 
 use build_timestamp::build_time;
 use lazy_static::lazy_static;
-use wasm_bindgen::JsValue;
-use wasm_bindgen::prelude::*;
 use wt_datamine_extractor_lib::bombs::bombs::Bomb;
 use wt_datamine_extractor_lib::missile::missile::Missile;
 use wt_datamine_extractor_lib::thermal::thermals::Thermal;
@@ -95,10 +92,10 @@ enum Route {
 }
 
 fn main() {
-	yew::Renderer::<app>::new().render();
+	yew::Renderer::<App>::new().render();
 }
 
-#[function_component]
+#[function_component(App)]
 fn app() -> Html {
 
 	html! {

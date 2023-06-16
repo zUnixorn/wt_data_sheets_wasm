@@ -1,7 +1,5 @@
-use std::sync::atomic::{AtomicBool, AtomicI32, Ordering};
-use std::sync::atomic::Ordering::Relaxed;
 
-use bevy_reflect::{Reflect, Struct};
+use bevy_reflect::{ Struct};
 use plotters::prelude::*;
 use plotters_canvas::CanvasBackend;
 use wasm_bindgen::prelude::*;
@@ -11,7 +9,7 @@ use wt_sensor::util::Limits;
 use std::str::FromStr;
 
 use crate::RADAR;
-use crate::util::{console_log, get_document, panic_debug};
+use crate::util::{ get_document, panic_debug};
 
 #[wasm_bindgen]
 pub fn render_table() {
@@ -71,7 +69,6 @@ pub fn render_table() {
 				}
 				if let Some(val) = iter_field.downcast_ref::<Pattern>() {
 					elem.set_inner_html(&val.to_string());
-					;
 				}
 				if let Some(val) = iter_field.downcast_ref::<SubmodeCategory>() {
 					elem.set_inner_html(&val.to_string());
@@ -82,19 +79,19 @@ pub fn render_table() {
 												 val.elevation.start(), val.elevation.end(),
 					));
 				}
-				row.append_child(&elem);
+				let _ = row.append_child(&elem);
 			}
 
 			let canvas = document.create_element("canvas").unwrap();
 			canvas.set_id(&format!("canvas_{i}"));
 			canvas.set_class_name("canvas_scan");
-			canvas.set_attribute("data-pattern", &mode.pattern.to_string());
-			canvas.set_attribute("width", "100").unwrap();
-			canvas.set_attribute("height", "100").unwrap();
+			let _ = canvas.set_attribute("data-pattern", &mode.pattern.to_string());
+			let _ = canvas.set_attribute("width", "100").unwrap();
+			let _ = canvas.set_attribute("height", "100").unwrap();
 
 			row.append_child(&canvas).unwrap();
 
-			submode_rows.append_child(&row);
+			let _ = submode_rows.append_child(&row);
 		}
 	}
 }

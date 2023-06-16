@@ -1,18 +1,11 @@
-use std::ops::RangeInclusive;
 use lazy_static::lazy_static;
-use serde::{Deserialize, Serialize};
 use wasm_bindgen::prelude::*;
 use crate::{console_log, get_document};
-use std::sync::Arc;
 use std::sync::Mutex;
-use std::time::{Duration, SystemTime};
 use wt_afterburner::Thrust;
 use crate::localhost::all_from_req;
-use crate::utils::direct_average::Average;
 use crate::utils::long_average::LongAverage;
 use crate::utils::format_duration::format_duration;
-use crate::localhost::indicators::Indicators;
-use crate::localhost::state::State;
 use plotters::drawing::IntoDrawingArea;
 use plotters::style::RGBColor;
 use plotters_canvas::CanvasBackend;
@@ -56,7 +49,7 @@ impl AppState {
 
 
 #[wasm_bindgen]
-pub fn core_loop(indicators: &str, state: &str, timeout: usize) {
+pub fn core_loop(indicators: &str, state: &str, _timeout: usize) {
 	let mut app_state = APP_STATE.lock().unwrap();
 	// Gates validity of passed data
 

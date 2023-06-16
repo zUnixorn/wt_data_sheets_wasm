@@ -1,7 +1,6 @@
 use std::iter::Sum;
 use std::ops::Add;
 use average::{MeanWithError, Variance};
-use crate::console_log;
 
 #[derive(Debug, Clone)]
 pub struct Average<V: Sized + Add + Copy + 'static> {

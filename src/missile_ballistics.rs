@@ -6,7 +6,6 @@ use wt_ballistics_calc_lib::runner::generate;
 use crate::MISSILES;
 
 use std::str::FromStr;
-use crate::util::console_log;
 
 
 const WIDTH: u32 = 3840;
