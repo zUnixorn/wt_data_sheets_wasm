@@ -12,6 +12,7 @@ use crate::pages::widgets::missile_seeker_category::MissileSeekerCategory;
 
 use crate::pages::privacy_policy::PrivacyPolicy;
 use crate::pages::navbar::Header;
+use crate::pages::table::Table;
 
 use crate::util::{console_log, get_document, make_missile_option_inputs};
 
@@ -115,7 +116,7 @@ fn route(routes: Route) -> Html {
 
 
 		Route::Table => html! {
-			 <MissileSeekerCategory />
+			 <Table />
 		},
 
 		Route::PrivacyPolicy => html! {
