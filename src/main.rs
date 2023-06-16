@@ -11,6 +11,7 @@ use wt_datamine_extractor_lib::thermal::thermals::Thermal;
 use wt_sensor::Radar;
 use yew::prelude::*;
 use yew_router::prelude::*;
+use crate::pages::widgets::missile_seeker_category::MissileSeekerCategory;
 
 use crate::pages::privacy_policy::PrivacyPolicy;
 use crate::pages::navbar::Header;
@@ -79,8 +80,15 @@ lazy_static! {
 enum Route {
 	#[at("/")]
 	Index,
+
+	#[at("/table")]
+	Table,
+
+
 	#[at("/privacy_policy")]
 	PrivacyPolicy,
+
+
 	#[not_found]
 	#[at("/404")]
 	NotFound,
@@ -107,9 +115,17 @@ fn app() -> Html {
 fn route(routes: Route) -> Html {
 	match routes {
 		Route::Index => html! { {"index"} },
+
+
+		Route::Table => html! {
+			 <MissileSeekerCategory />
+		},
+
 		Route::PrivacyPolicy => html! {
             <PrivacyPolicy />
         },
+
+
 		Route::NotFound => html! {
 			<div style="width: fit-content; margin: 0 auto">
 				<h1 style="width: fit-content; margin: 0 auto">{ "404 \n" }</h1>
